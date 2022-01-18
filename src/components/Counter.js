@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 const Counter = () => {
   const counter = useSelector(state => state.counter);
   const dispatch = useDispatch();
+  const show = useSelector(state => state.showCounter)
   
   const incrementHandler = () => {
     dispatch({type : 'increment'})
@@ -18,16 +19,18 @@ const Counter = () => {
   }
   
 
-  const toggleCounterHandler = () => {};
+  const toggleCounterHandler = () => {
+    dispatch({type : 'toggle'})
+  };
 
   return (
     <main className={classes.counter}>
       <h1>Redux Counter</h1>
-      <div className={classes.value}>{counter}</div>
-      <button onClick={toggleCounterHandler}>Toggle Counter</button>
+      {show && <div className={classes.value}>{counter} </div>}
       <button onClick = {incrementHandler}>Increment</button>
       <button onClick = {IncbyFiveHandler}>Inc By 5</button>
       <button onClick={decrementHandler}>Decrement</button>
+      <button onClick={toggleCounterHandler}>Toggle Counter</button>
     </main>
   );
 };
