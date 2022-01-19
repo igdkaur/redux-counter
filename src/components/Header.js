@@ -1,6 +1,6 @@
 import classes from './Header.module.css';
 import {useSelector,useDispatch} from 'react-redux'
-import { authActions } from '../store/index';
+import { authActions } from '../store/auth';
 
 
 const Header = () => {
@@ -32,9 +32,3 @@ const Header = () => {
 };
 
 export default Header;
-import { authActions } from "../store/index";
-const dispatch = useDispatch();
-const handleLogout = () => {
-  dispatch(authActions.logout());
-};
-<button onClick={handleLogout}>Logout</button>;
